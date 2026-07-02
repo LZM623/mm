@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>逐光·绽放 - 2026届毕业设计展</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Serif+SC:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-exhibition {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-exhibition-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .hero-exhibition-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-exhibition-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(20, 30, 60, 0.8) 100%);
+        }
+        
+        .hero-exhibition-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 150px 50px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .exhibition-tag {
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        .hero-exhibition-content h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -3px;
+            background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-exhibition-content h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            letter-spacing: 8px;
+        }
+        
+        .exhibition-date {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 3px;
+        }
+
+        .poster-section {
+            padding: 100px 50px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, #0a0a15 100%);
+        }
+        
+        .poster-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .poster-container h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+        }
+        
+        .poster-wrapper {
+            position: relative;
+            display: inline-block;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .poster-wrapper:hover {
+            box-shadow: 0 0 80px rgba(0, 212, 255, 0.4);
+            transform: translateY(-5px);
+        }
+        
+        .poster-wrapper img {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            display: block;
+        }
+        
+        .poster-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, transparent 30%, transparent 70%, rgba(0, 0, 0, 0.5) 100%);
+            pointer-events: none;
+        }
+
+        .gallery-section {
+            padding: 100px 50px;
+            background: #0a0a15;
+        }
+        
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .gallery-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .gallery-header p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-category {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: #00d4ff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .gallery-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .gallery-description {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+        
+        .gallery-student {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 15px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+        }
+        
+        .modal-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: #ffffff;
+        }
+        
+        .modal-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .modal-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .modal-info p {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-exhibition-content h1 {
+                font-size: 3.5rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-exhibition-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-exhibition-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .poster-wrapper img {
+                max-width: 100%;
+            }
+        }
+
+        .opening-section {
+            padding: 100px 50px;
+            background: linear-gradient(180deg, #0a0a15 0%, rgba(0, 0, 0, 0.95) 100%);
+        }
+
+        .opening-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .opening-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .opening-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .opening-header p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+
+        .opening-content {
+            position: relative;
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(0, 212, 255, 0.1);
+        }
+
+        .opening-content img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .opening-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+        }
+
+        .opening-info h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #00d4ff 0%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .opening-info p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+
+        .opening-details {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .opening-details span {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 1024px) {
+            .opening-content img {
+                height: 400px;
+            }
+
+            .opening-info h3 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .opening-section {
+                padding: 60px 30px;
+            }
+
+            .opening-content img {
+                height: 300px;
+            }
+
+            .opening-info {
+                padding: 25px;
+            }
+
+            .opening-info h3 {
+                font-size: 1.5rem;
+            }
+
+            .opening-details {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <a href="index.html" class="logo">QUT<span>ART</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about-environment.html">环境设计</a></li>
+            <li><a href="graduation-exhibition.html" class="active">毕业展</a></li>
+            <li><a href="tools-museum.html">美学馆</a></li>
+            <li><a href="index.html#contact">联系我们</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <section class="hero-exhibition">
+        <div class="hero-exhibition-bg">
+            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Cyberpunk%20cityscape%20Qingdao%20coastal%20neon%20lights%20futuristic%20architecture%20ocean%20night%20reflection%20digital%20art&image_size=landscape_16_9" alt="毕业展">
+            <div class="hero-exhibition-overlay"></div>
+        </div>
+        <div class="hero-exhibition-content">
+            <span class="exhibition-tag">GRADUATION EXHIBITION 2026</span>
+            <h1>逐光·绽放</h1>
+            <h2>BLOOMING IN LIGHT</h2>
+            <p class="exhibition-date">2026年6月15日 - 7月15日 | 青岛理工大学艺术与设计学院</p>
+        </div>
+    </section>
+
+    <section class="poster-section">
+        <div class="poster-container scroll-reveal">
+            <h2>主视觉海报</h2>
+            <div class="poster-wrapper scroll-reveal-scale">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20art%20exhibition%20poster%20design%20Qingdao%20coastal%20theme%20cyberpunk%20style%20neon%20blue%20pink%20gradient%20abstract%20waves%20geometric%20shapes%20Chinese%20characters%20futuristic&image_size=portrait_4_3" alt="2026届毕业设计展主视觉海报">
+                <div class="poster-overlay"></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="gallery-section">
+        <div class="gallery-header scroll-reveal">
+            <h2>作品矩阵</h2>
+            <p>探索2026届毕业生的创新设计世界</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item scroll-reveal-left" data-title="海洋之心智能手表" data-category="工业设计" data-student="李明轩" data-desc="融入海洋元素的智能穿戴设备设计，采用流线型外观与可持续材料">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Smart%20watch%20design%20ocean%20theme%20blue%20gradient%20modern%20minimalist%20wearable%20technology%20futuristic%20product&image_size=landscape_4_3" alt="工业设计作品">
+                <div class="gallery-overlay">
+                    <span class="gallery-category">工业设计</span>
+                    <h3 class="gallery-title">海洋之心智能手表</h3>
+                    <p class="gallery-description">融入海洋元素的智能穿戴设备设计</p>
+                    <p class="gallery-student">作者：李明轩</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item scroll-reveal-right" data-title="山海系列服装" data-category="服装设计" data-student="王雨晴" data-desc="以青岛山海为灵感的国潮服饰系列，传统纹样与现代剪裁的完美融合">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Fashion%20design%20Chinese%20traditional%20style%20modern%20dress%20ocean%20mountain%20inspired%20elegant%20silk%20fabric%20flowing%20design&image_size=landscape_4_3" alt="服装设计作品">
+                <div class="gallery-overlay">
+                    <span class="gallery-category">服装设计</span>
+                    <h3 class="gallery-title">山海系列服装</h3>
+                    <p class="gallery-description">传统纹样与现代剪裁的完美融合</p>
+                    <p class="gallery-student">作者：王雨晴</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item scroll-reveal-left scroll-reveal-delay-1" data-title="滨海生态社区" data-category="环境设计" data-student="陈浩然" data-desc="可持续发展理念下的滨海社区规划，实现人与自然的和谐共生">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Sustainable%20community%20design%20coastal%20ecology%20green%20architecture%20modern%20residential%20development%20ocean%20view&image_size=landscape_4_3" alt="环境设计作品">
+                <div class="gallery-overlay">
+                    <span class="gallery-category">环境设计</span>
+                    <h3 class="gallery-title">滨海生态社区</h3>
+                    <p class="gallery-description">可持续发展理念下的社区规划</p>
+                    <p class="gallery-student">作者：陈浩然</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item scroll-reveal-right scroll-reveal-delay-1" data-title="城市记忆品牌设计" data-category="视觉传达" data-student="张晓婷" data-desc="以青岛城市记忆为主题的品牌视觉系统，展现城市文化底蕴">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Brand%20identity%20design%20city%20memory%20theme%20modern%20typography%20blue%20orange%20color%20palette%20geometric%20logo%20visual%20system&image_size=landscape_4_3" alt="视觉传达作品">
+                <div class="gallery-overlay">
+                    <span class="gallery-category">视觉传达</span>
+                    <h3 class="gallery-title">城市记忆品牌设计</h3>
+                    <p class="gallery-description">展现城市文化底蕴的视觉系统</p>
+                    <p class="gallery-student">作者：张晓婷</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="opening-section">
+        <div class="opening-container">
+            <div class="opening-header scroll-reveal">
+                <h2>开幕式现场</h2>
+                <p>2026届青岛理工大学艺术与设计学院优秀毕业展</p>
+            </div>
+            <div class="opening-content scroll-reveal-scale">
+                <img src="绿帽子.jpg" alt="开幕式现场">
+                <div class="opening-info">
+                    <h3>向未来</h3>
+                    <p>2026届青岛理工大学艺术与设计学院优秀毕业展</p>
+                    <div class="opening-details">
+                        <span>指导单位：宣传部、教务处、图书馆</span>
+                        <span>主办单位：艺术与设计学院</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-info">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDesc"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>QUT ART</h3>
+                <p>青岛理工大学艺术与设计学院</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>地址：青岛市市北区抚顺路11号</p>
+                    <p>电话：0532-85071000</p>
+                    <p>邮箱：art@qut.edu.cn</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="index.html#about">学院概况</a></li>
+                        <li><a href="index.html#programs">专业设置</a></li>
+                        <li><a href="index.html#works">教学成果</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 QUT ART DESIGN. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDesc = document.getElementById('modalDesc');
+            const modalClose = document.getElementById('modalClose');
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const imgSrc = this.querySelector('img').src;
+                    const title = this.dataset.title;
+                    const category = this.dataset.category;
+                    const desc = this.dataset.desc;
+                    const student = this.dataset.student;
+
+                    modalImage.src = imgSrc;
+                    modalTitle.textContent = `${title} - ${category}`;
+                    modalDesc.textContent = `${desc} | ${student}`;
+                    modal.classList.add('active');
+                });
+            });
+
+            modalClose.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    menuToggle.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            const navLinkItems = document.querySelectorAll('.nav-links a');
+            navLinkItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
